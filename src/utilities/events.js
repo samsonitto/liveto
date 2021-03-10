@@ -8,4 +8,4 @@ const getAll = async () => {
   return response.data.results
 }
 
-export { getAll }
+export default { getAll }

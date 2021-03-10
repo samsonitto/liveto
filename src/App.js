@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
-import { getAll } from './utilities/getAll'
 import './styles/style.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { initializeEvents } from './reducers/eventReducer'
 
 const App = () => {
-  const [ events, setEvents ] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getAll()
-      .then(data => {
-        data.forEach((element, i) => {
-          element.id = i + 1
-        })
-        setEvents(data)
-        console.log(data)
-      })
+    dispatch(initializeEvents())
   }, [])
+
+  const events = useSelector(state => {
+    return state.events
+  })
 
   return (
     <div className="App">
@@ -34,4 +32,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
