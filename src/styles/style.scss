@@ -1,0 +1,22 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.list-card {
+  width: 18rem;
+}
+
+.card:hover {
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.225);
+  transform: scale(1.05);
+}
+
+.card {
+transition:.3s;
+}
+
+.card-img {
+  max-height: 18rem;
+  min-height: 18rem;
+  object-fit: cover;
+}

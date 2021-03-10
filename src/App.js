@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './components/Home'
+import { getAll } from './utilities/getAll'
+import './styles/style.css'
 
-function App() {
+const App = () => {
+  const [ events, setEvents ] = useState([])
+
+  useEffect(() => {
+    getAll()
+      .then(data => {
+        data.forEach((element, i) => {
+          element.id = i + 1
+        })
+        setEvents(data)
+        console.log(data)
+      })
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home events={events} />
+            </Route>
+            <Route path="/:id">
+              
+            </Route>
+          </Switch>
+      </Router>
     </div>
-  );
+  )
 }
 
 export default App;
