@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Spinner, Card, Col, Row, Image } from "react-bootstrap"
+import { Container, Card, Col, Row, Image } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { initializeOneEvent } from "../reducers/eventReducer"

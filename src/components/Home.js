@@ -1,4 +1,4 @@
-import { Container, Row, Spinner } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import EventInfo from "./EventInfo"
 import Loading from "./Loading"
 
