@@ -16,9 +16,6 @@ jobs:
 
       - name: add repo to tar
         run: |
-          npm install
-          npm update & npm cache clean --force
-          npm run build
           cd build
           tar -cvf ../deploy.tar .
           cd ..
