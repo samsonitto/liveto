@@ -39,8 +39,8 @@ const EventDetails = () => {
     <Container className="mt-5">
     <Alert variant={error.variant} hidden={error.hidden}>{error.text}</Alert>
     <Row>
-      <Col sm={4}>
-        <Image className="border" fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
+      <Col sm={4} className="text-center justify-content-center">
+        <Image className="border detail-image" fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
       </Col>
       <Col sm={8}>
         <div className="border-0">
