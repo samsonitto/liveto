@@ -15,8 +15,26 @@
 transition:.3s;
 }
 
+.card a {
+  color: $dark;
+}
+
+.card a:hover {
+  text-decoration: none;
+}
+
 .card-img {
   max-height: 18rem;
   min-height: 18rem;
   object-fit: cover;
+}
+
+.loading {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.detail-image {
+  max-width: 30%;
 }

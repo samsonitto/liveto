@@ -4,6 +4,7 @@ import Home from './components/Home'
 import './styles/style.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeEvents } from './reducers/eventReducer'
+import EventDetails from './components/EventDetails'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -16,6 +17,8 @@ const App = () => {
     return state.events
   })
 
+  console.log(events)
+
   return (
     <div className="App">
       <Router>
@@ -23,8 +26,8 @@ const App = () => {
             <Route exact path="/">
               <Home events={events} />
             </Route>
-            <Route path="/:id">
-              
+            <Route path="/event/:slug">
+              <EventDetails />
             </Route>
           </Switch>
       </Router>

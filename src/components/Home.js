@@ -1,13 +1,15 @@
-import { Container, Row } from "react-bootstrap"
+import { Container, Row, Spinner } from "react-bootstrap"
 import EventInfo from "./EventInfo"
 
 const Home = ({ events }) => {
   return (
     !events ?
-    <Container>Loading</Container>
+    <Container className="loading w-100">
+      <Spinner animation="border" />
+    </Container>
     :
     <Container>
-      <Row>
+      <Row className="justify-content-center">
         {events.map(e => 
           <EventInfo eventInfo={e} />
         )}
