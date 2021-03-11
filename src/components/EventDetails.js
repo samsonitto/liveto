@@ -16,12 +16,14 @@ const EventDetails = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    // Haetaan tapahtuma rajapinnasta ja tallennetaan redux storeen
     dispatch(initializeOneEvent(eventSlug))
       .catch(error => {
         setError({ text: error.message, hidden: false, variant: "danger" })
       })
   }, [eventSlug])
 
+  // Haetaan tapahtuma statesta
   const event = useSelector(state => {
     return state.activeEvent
   })

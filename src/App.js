@@ -10,15 +10,14 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // Haetaan tapahtumat rajapinnasta
+    // Haetaan tapahtumat rajapinnasta ja tallennetaan redux storeen
     dispatch(initializeEvents())
   }, [])
 
+  // Haetaan tapahtumat statesta
   const events = useSelector(state => {
     return state.events
   })
-
-  console.log(events)
 
   return (
     <div className="App">
