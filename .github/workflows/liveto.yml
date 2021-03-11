@@ -4,7 +4,7 @@ name: Deploy liveto app to the server
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   
 jobs:
   build:
