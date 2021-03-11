@@ -4,7 +4,7 @@ const EventStatus = ({ status }) => {
   return (
     status === "ongoing"
     ?
-    <Alert variant="success">
+    <Alert className="text-center mt-3" variant="success">
       <h4>The event is in progress</h4>
     </Alert>
     :
@@ -16,11 +16,11 @@ const EventStatus = ({ status }) => {
     :
     status === "past"
     ?
-    <Alert variant="danger">
+    <Alert className="text-center mt-3" variant="danger">
       <h4>The event is finished</h4>
     </Alert>
     :
-    <Alert variant="danger">
+    <Alert className="text-center mt-3" variant="danger">
       <h4>There is no date for this event</h4>
     </Alert>
   )

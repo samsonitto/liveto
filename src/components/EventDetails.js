@@ -7,6 +7,7 @@ import { dateComparison } from "../utilities/dateComparison"
 import EventStatus from "./EventStatus"
 import placeholderImage from '../images/placeholder-image.png'
 import { Alert } from "react-bootstrap"
+import Loading from "./Loading"
 
 const EventDetails = () => {
   const [eventSlug] = useState(useParams().slug)
@@ -28,21 +29,22 @@ const EventDetails = () => {
   return (
     !event
     ?
-    <Container className="loading w-100">
+    <div>
       <Alert variant={error.variant} hidden={error.hidden}>{error.text}</Alert>
-      <Spinner animation="border" />
-    </Container>
+      <Loading />
+    </div>
     :
     <Container className="mt-5">
     <Alert variant={error.variant} hidden={error.hidden}>{error.text}</Alert>
     <Row>
       <Col sm={4}>
-        <Image fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
+        <Image className="border" fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
       </Col>
       <Col sm={8}>
         <div className="border-0">
           <Card.Body className="py-0">
             <h1>{event.name}</h1>
+            <hr />
             <Card.Text>
               {event.short_description}
             </Card.Text>
