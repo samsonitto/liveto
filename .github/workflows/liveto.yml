@@ -47,3 +47,8 @@ jobs:
             find . \! -name 'deploy.tar' -delete
             tar -xvf deploy.tar
             rm deploy.tar
+            echo 'RewriteEngine On
+            RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+            RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+            RewriteRule ^ - [L]
+            RewriteRule ^ ./index.html' > .htaccess

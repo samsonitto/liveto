@@ -1,5 +1,9 @@
 # Liveto ennakkotehtävä
 
+Sovellus: http://liveto.codesamson.com
+
+## Tehtävänanto
+
 1. Listata tapahtumat yhdelle koontisivulle. kullekkin tapahtumalle  voisi esittää seuraavat tiedot:
 
      * Tapahtuman kuva (Jos on, muutoin jokin default kuva)
@@ -23,10 +27,10 @@
 
 ## Käytetty aika
 
-| Työ           |   Aika   |
-| ------------- | :------: |
-| Suunnittelu   |  15min   |
-| Koodaminen    | 3h 52min |
-| Dokumentointi |  10min   |
-| CI/CD         |          |
-| Yhteensä      | 4h 17min |
+| Työ           |     Aika     |
+| ------------- | :----------: |
+| Suunnittelu   |    15min     |
+| Koodaaminen   |   3h 52min   |
+| Dokumentointi |    10min     |
+| CI/CD         |    20min     |
+| **Yhteensä**  | **4h 37min** |
