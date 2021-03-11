@@ -45,7 +45,7 @@ const EventDetails = () => {
       <Col sm={8}>
         <div className="border-0">
           <Card.Body className="py-0">
-            <h1>{event.name}</h1>
+            <h1 className="mt-2">{event.name}</h1>
             <hr />
             <Card.Text>
               {event.short_description}
