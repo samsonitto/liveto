@@ -6,14 +6,19 @@ import { initializeOneEvent } from "../reducers/eventReducer"
 import { dateComparison } from "../utilities/dateComparison"
 import EventStatus from "./EventStatus"
 import placeholderImage from '../images/placeholder-image.png'
+import { Alert } from "react-bootstrap"
 
 const EventDetails = () => {
   const [eventSlug] = useState(useParams().slug)
+  const [error, setError] = useState({ text: "", hidden: true, variant: "danger" })
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(initializeOneEvent(eventSlug))
+      .catch(error => {
+        setError({ text: error.message, hidden: false, variant: "danger" })
+      })
   }, [eventSlug])
 
   const event = useSelector(state => {
@@ -24,10 +29,12 @@ const EventDetails = () => {
     !event
     ?
     <Container className="loading w-100">
+      <Alert variant={error.variant} hidden={error.hidden}>{error.text}</Alert>
       <Spinner animation="border" />
     </Container>
     :
     <Container className="mt-5">
+    <Alert variant={error.variant} hidden={error.hidden}>{error.text}</Alert>
     <Row>
       <Col sm={4}>
         <Image fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
