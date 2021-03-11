@@ -3,10 +3,12 @@ import { Container, Spinner, Card, Col, Row, Image } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { initializeOneEvent } from "../reducers/eventReducer"
+import { dateComparison } from "../utilities/dateComparison"
+import EventStatus from "./EventStatus"
+import placeholderImage from '../images/placeholder-image.png'
 
 const EventDetails = () => {
   const [eventSlug] = useState(useParams().slug)
-  const [datetime] = useState(new Date())
 
   const dispatch = useDispatch()
 
@@ -28,7 +30,7 @@ const EventDetails = () => {
     <Container className="mt-5">
     <Row>
       <Col sm={4}>
-        <Image fluid src={event.event_main_image} />
+        <Image fluid src={event.event_main_image ? event.event_main_image : placeholderImage} />
       </Col>
       <Col sm={8}>
         <div className="border-0">
@@ -53,14 +55,11 @@ const EventDetails = () => {
             :
               ""
             }
-
-            <p>{datetime.getTime() < new Date(event.end_time).getTime() ? "pienempi" : "isompi"}</p>
-            
           </Card.Body>
         </div>
       </Col>
     </Row>
-    
+    <EventStatus status={dateComparison(event.start_time, event.end_time)} />
     </Container>
   )
 }
