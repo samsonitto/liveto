@@ -1,0 +1,52 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy liveto app to the server
+
+on:
+  push:
+    branches: [ master ]
+  
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+
+      - name: add repo to tar
+        run: |
+          npm install
+          npm run build:all
+          cd build
+          tar -cvf ../deploy.tar .
+          cd ..
+          rm -r build
+          rm -r node_modules
+          #for later
+          #mkdir ../build
+          #cp -TR . ../build
+          #tar -cvf deploy.tar ../build/
+      - name: copying liveto app to the server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{  secrets.HOST }}
+          username: ${{  secrets.SSH_USER }}
+          #password: ${{  secrets.PASSWORD }}
+          key: ${{  secrets.SSH_KEY }}
+          passphrase: ${{  secrets.PASSPHRASE }}
+          source: "deploy.tar"
+          target: /home/samson/public_html/liveto
+
+      - name: untar and remove .tar file
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{  secrets.PASSPHRASE }}
+          script: |
+            cd ~/public_html/ristomattola
+            find . \! -name 'deploy.tar' -delete
+            tar -xvf deploy.tar
+            rm deploy.tar
