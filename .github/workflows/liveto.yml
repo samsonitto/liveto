@@ -43,7 +43,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{  secrets.PASSPHRASE }}
           script: |
-            cd ~/public_html/ristomattola
+            cd ~/public_html/liveto
             find . \! -name 'deploy.tar' -delete
             tar -xvf deploy.tar
             rm deploy.tar
